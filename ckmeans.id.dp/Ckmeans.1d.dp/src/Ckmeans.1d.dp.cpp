@@ -60,7 +60,7 @@ data kmeans_1d_dp( vector<double> x, int K)
     vector<double> temp_s = x;
 
     sort(temp_s.begin()+1, temp_s.end());
-
+	
     for(int i=1; i<(int)x.size(); i++)
 	for(int j=1; j<(int)x.size(); j++)
 		if( x[i] == temp_s[j] )
@@ -99,7 +99,7 @@ data kmeans_1d_dp( vector<double> x, int K)
 			for(int i=1;i<(int)x.size();i++)
 			sum+=x[i];
 			mean = sum/N;
-
+	
 			for(int i=1;i<(int)x.size();i++)
 			D[1][i] += pow( (x[i] - mean), 2 );          
             
@@ -128,7 +128,7 @@ data kmeans_1d_dp( vector<double> x, int K)
 	    	for(int a=j;a<=i;a++)
 			sum+=x[a];
 	    	mean = sum/(i-j+1);
-
+	
 	    	for(int a=j;a<=i;a++)
 			d += pow( (x[a] - mean), 2 );
             } 
@@ -197,12 +197,12 @@ data kmeans_1d_dp( vector<double> x, int K)
 	  
       for(int a=(int)cluster_left;a<=cluster_right;a++)
 		sum+=x[a];
-
+		
       result.centers[k] = sum/(cluster_right-cluster_left+1);
 
       for(int a=(int)cluster_left;a<=cluster_right;a++)
       	result.withinss[k] += pow( (x[a] - result.centers[k]), 2 );
-
+		
       result.size[k] = cluster_right - (int)cluster_left + 1;
       
       if(k > 1) {
